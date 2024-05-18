@@ -87,7 +87,7 @@ export default function Page() {
   
   return (
     <ThemeProvider theme={theme}>
-      Today's temperature: {JSON.stringify(weather.temp)}
+      Today's temperature poop: {JSON.stringify(weather.temp)}
     <Container component="main"  maxWidth="xs">
  
        <div style={{fontSize: '40px'}} > Shopping Cart</div>
