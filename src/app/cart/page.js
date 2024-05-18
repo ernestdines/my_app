@@ -45,20 +45,20 @@ export default function Page() {
 
 
   const [data, setData] = useState(null)
-  const [weather, setWeatherData] = useState(0)
+  //const [weather, setWeatherData] = useState(0)
  
   useEffect(() => {
-    fetch('api/getProducts')
+    fetch('api/getCartItems')
       .then((res) => res.json())
       .then((data) => {
         setData(data)
       })
-
+/*
       fetch('api/getWeather')
       .then((res) => res.json())
       .then((weather) => {
         setWeatherData(weather)
-      })
+      })*/
 
 
   }, [])
@@ -83,14 +83,14 @@ export default function Page() {
 
 
 
-  if (!weather) return <p>No weather</p>
+  //if (!weather) return <p>No weather</p>
   
   return (
     <ThemeProvider theme={theme}>
-      Today's weather: {JSON.stringify(weather.temp)}°C, {JSON.stringify(weather.condition)}
+      Today's temperature: {/*JSON.stringify(weather.temp)*/}
     <Container component="main"  maxWidth="xs">
  
-       <div style={{fontSize: '40px'}} > Dashboard</div>
+       <div style={{fontSize: '40px'}} > Shopping Cart</div>
         <div>
       {
         data.map((item, i) => (
@@ -101,7 +101,7 @@ export default function Page() {
             - 
             {item.price}
             <br></br>
-            <Button onClick={() => putInCart(item.pname)} variant="outlined"> Add to cart </Button>
+            <Button onClick={() => removeFromCart(item.pname)} variant="outlined"> Remove from cart </Button>
           </div>
         ))
       }

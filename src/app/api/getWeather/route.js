@@ -7,19 +7,18 @@ export async function GET(req, res) {
   
 
   
-    const res2 = await fetch('http://api.weatherapi.com/v1/current.json?key=043454a0665c4c34a7f135617230911&q=London&aqi=no')
+    const res2 = await fetch('http://api.weatherapi.com/v1/current.json?key=e6f82ba1c691454c851114711241705&q=Dublin&aqi=no')
     const data = await res2.json()
 
     console.log(data.current.temp_c)
 
 
     let currentTemp = data.current.temp_c
+    let condition = data.current.condition.text
   
     // at the end of the process we need to send something back.
-    return Response.json({"temp": currentTemp})
+    return Response.json({"temp": currentTemp, "condition": condition})
 
 
    
   }
-  
-  
