@@ -90,7 +90,7 @@ export default function Page() {
       Today's temperature poop: {JSON.stringify(weather.temp)}
     <Container component="main"  maxWidth="xs">
  
-       <div style={{fontSize: '40px'}} > Shopping Cart</div>
+       <div style={{fontSize: '40px'}} > Shopping Fart</div>
         <div>
       {
         data.map((item, i) => (
