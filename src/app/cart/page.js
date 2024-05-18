@@ -45,7 +45,7 @@ export default function Page() {
 
 
   const [data, setData] = useState(null)
-  //const [weather, setWeatherData] = useState(0)
+  const [weather, setWeatherData] = useState(0)
  
   useEffect(() => {
     fetch('api/getCartItems')
@@ -53,12 +53,12 @@ export default function Page() {
       .then((data) => {
         setData(data)
       })
-/*
+
       fetch('api/getWeather')
       .then((res) => res.json())
       .then((weather) => {
         setWeatherData(weather)
-      })*/
+      })
 
 
   }, [])
@@ -83,7 +83,7 @@ export default function Page() {
 
 
 
-  //if (!weather) return <p>No weather</p>
+  if (!weather) return <p>No weather</p>
   
   return (
     <ThemeProvider theme={theme}>
