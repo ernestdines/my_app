@@ -9,6 +9,7 @@ export async function GET(req, res) {
   // that were sent across to us.
   const { searchParams } = new URL(req.url)
   const pname = searchParams.get('pname')
+  const quantity = searchParams.get('quantity')
 
   console.log(pname);
 
@@ -28,7 +29,7 @@ export async function GET(req, res) {
   const collection = db.collection('shopping_cart'); // collection name
 
 
-  var myobj = { pname: pname, username: "sample@test.com"};
+  var myobj = { pname: pname, quantity: quantity, username: "sample@test.com"};
   const insertResult = await collection.insertOne(myobj);
 
 

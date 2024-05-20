@@ -29,16 +29,6 @@ export default function Page() {
   //
   // function for putting items into the shopping cart.
   //
-  function putInCart(pname, quantity){
-
-    console.log("putting in cart: " + pname + ": " + quantity)
-
-
-    fetch("api/putInCart?pname="+pname+"&quantity="+quantity);
-
-
- 
-  }
 
 
 
@@ -47,17 +37,20 @@ export default function Page() {
   const [data, setData] = useState(null)
  
   useEffect(() => {
-    fetch('api/getProducts')
+    fetch('api/getCartItems')
       .then((res) => res.json())
       .then((data) => {
         setData(data)
       })
 
-
   }, [])
  
+
   if (!data) return <p>No data</p>
 
+
+
+  
   const theme = createTheme({
     palette: {
      
@@ -67,24 +60,24 @@ export default function Page() {
     },
   });
   
+  
   return (
     <ThemeProvider theme={theme}>
     <Container component="main"  maxWidth="xs">
  
-       <div style={{fontSize: '40px'}} >Products</div>
+       <div style={{fontSize: '40px'}} > Shopping Cart</div>
         <div>
       {
         data.map((item, i) => (
           <div style={{padding: '20px'}} key={i} >
             <br></br>
-            {item.pname}
+            {item.pname}: {item.quantity}
             <br></br>
-            <img src = {item.image} width = "300" alt = "image"></img>
-            <input type="number" id={"quantity"+i} name="quantity" min="1" step="1"></input>
-            <Button onClick={() => putInCart(item.pname, document.getElementById('quantity' + i).value)} variant="outlined">Add to Basket</Button>
           </div>
         ))
       }
+      <Button onClick={() => putInCart(item.pname, document.getElementById('quantity').value)} variant="outlined">Checkout</Button>
+          
     </div>
 
     </Container>
